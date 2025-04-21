@@ -70,7 +70,7 @@ def main():
     prompt_embedding = client.embeddings(model='nomic-embed-text', prompt=prompt)[
         "embedding"
     ]
-    most_similar_chunks = find_most_similar(prompt_embedding, embeddings)[:15]
+    most_similar_chunks = find_most_similar(prompt_embedding, embeddings)[:25]
     for item in most_similar_chunks:
         print(item[0], paragraphs[item[1]])
     print("\n\n\n")
@@ -97,9 +97,11 @@ def main():
     prompt_embedding = client.embeddings(model='nomic-embed-text', prompt=prompt2)[
         "embedding"
     ]
-    most_similar_chunks = find_most_similar(prompt_embedding, embeddings)[:15]
+    most_similar_chunks = find_most_similar(prompt_embedding, embeddings)[:5]
     for item in most_similar_chunks:
         print(item[0], paragraphs[item[1]])
+
+    print("\n\n\n")
 
     response2 = client.chat(
         'gemma3:1b',
